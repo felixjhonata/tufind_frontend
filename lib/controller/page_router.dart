@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tufind_frontend/view/home_page.dart';
-import 'package:tufind_frontend/view/login_page.dart';
-import 'package:tufind_frontend/view/register_page.dart';
+import 'package:tufind_frontend/view/page/home_page.dart';
+import 'package:tufind_frontend/view/page/login_page.dart';
+import 'package:tufind_frontend/view/page/register_page.dart';
 
 class PageRouter {
   static void toLogin(BuildContext context) {

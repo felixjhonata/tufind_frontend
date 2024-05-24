@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:tufind_frontend/model/color.dart';
 
-class MyTextField extends StatelessWidget {
-  const MyTextField(
-      {super.key,
-      required this.hintText,
-      required this.icon,
-      required this.controller});
+class MySearchField extends StatefulWidget {
+  const MySearchField(
+      {super.key, required this.controller, required this.function});
 
-  final String hintText;
-  final IconData icon;
   final TextEditingController controller;
+  final Function() function;
 
+  @override
+  State<MySearchField> createState() => _MySearchFieldState();
+}
+
+class _MySearchFieldState extends State<MySearchField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
+      controller: widget.controller,
       cursorColor: lightBlue,
       decoration: InputDecoration(
+        suffixIcon: Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: IconButton(
+              icon: const Icon(Icons.search), onPressed: widget.function),
+        ),
         filled: true,
         fillColor: Colors.white,
-        prefixIcon: Icon(
-          icon,
-          color: lightBlue,
+        hintText: "Search",
+        contentPadding: const EdgeInsets.only(
+          left: 20,
         ),
-        hintText: hintText,
         border: const OutlineInputBorder(),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(

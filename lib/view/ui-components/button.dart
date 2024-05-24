@@ -32,6 +32,7 @@ class MyButton extends StatelessWidget {
       buttonStyle = ButtonStyle(
         fixedSize: MaterialStateProperty.all(const Size(350, 50)),
         backgroundColor: MaterialStateProperty.all(Colors.white),
+        surfaceTintColor: MaterialStateProperty.all(Colors.white),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),

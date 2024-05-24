@@ -5,6 +5,7 @@ import 'package:tufind_frontend/controller/login_page_controller.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/view/ui-components/back_button.dart';
 import 'package:tufind_frontend/view/ui-components/button.dart';
+import 'package:tufind_frontend/view/ui-components/password_field.dart';
 import 'package:tufind_frontend/view/ui-components/text_field.dart';
 import 'package:tufind_frontend/view/ui-components/title.dart';
 
@@ -18,6 +19,7 @@ class LoginPage extends StatelessWidget {
         LoginPageController.passwordController;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -42,16 +44,24 @@ class LoginPage extends StatelessWidget {
                         firstPart: "LOG",
                         secondPart: "IN",
                       ),
-                      MyTextField(
-                        hintText: "Username / Email",
-                        icon: Icons.person,
-                        controller: emailController,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
+                        child: MyTextField(
+                          hintText: "Username / Email",
+                          icon: Icons.person,
+                          controller: emailController,
+                        ),
                       ),
-                      MyTextField(
-                        hintText: "Password",
-                        icon: Icons.password,
-                        controller: passwordController,
-                        obscureText: true,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
+                        child: MyPasswordField(
+                          hintText: "Password",
+                          icon: Icons.password,
+                          controller: passwordController,
+                          obscureText: true,
+                        ),
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 15, bottom: 20),
@@ -80,7 +90,9 @@ class LoginPage extends StatelessWidget {
               ),
             ),
           ),
-          const MyBackButton(onPressed: LoginPageController.resetControllers,),
+          const MyBackButton(
+            onPressed: LoginPageController.resetControllers,
+          ),
         ],
       ),
     );

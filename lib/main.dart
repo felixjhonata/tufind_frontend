@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tufind_frontend/view/landing_page.dart';
+import 'package:tufind_frontend/view/page/landing_page.dart';
 
 void main() {
   runApp(const MyApp());

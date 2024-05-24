@@ -6,8 +6,8 @@ class LoginPageController {
   static TextEditingController passwordController = TextEditingController();
 
   static void resetControllers() {
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
+    emailController.text = "";
+    passwordController.text = "";
   }
 
   static void login(BuildContext context) {

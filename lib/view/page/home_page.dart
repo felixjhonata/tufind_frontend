@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tufind_frontend/model/color.dart';
+import 'package:tufind_frontend/view/module/auction.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,6 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: NavigationBar(
         backgroundColor: darkBlue,
         destinations: const [
@@ -29,13 +31,12 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
         children: [
           // Header
           Padding(
             padding: const EdgeInsets.only(
-              left: 40,
-              right: 40,
               top: 80,
               bottom: 20,
             ),
@@ -57,32 +58,46 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 10,
-              left: 40,
-            ),
-            child: Row(
-              children: const [
-                Text(
-                  "Let's ",
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: darkBlue,
-                    fontWeight: FontWeight.w800,
-                  ),
+          const Row(
+            children: [
+              Text(
+                "Let's ",
+                style: TextStyle(
+                  fontSize: 30,
+                  color: darkBlue,
+                  fontWeight: FontWeight.w800,
                 ),
-                Text(
-                  "Learn!",
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: lightBlue,
-                    fontWeight: FontWeight.w800,
-                  ),
+              ),
+              Text(
+                "Learn!",
+                style: TextStyle(
+                  fontSize: 30,
+                  color: lightBlue,
+                  fontWeight: FontWeight.w800,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+          const SizedBox(height: 20),
+
+          // Auction ends at
+          Row(
+            children: [
+              const Text(
+                "Auction ends at ",
+                style: TextStyle(color: darkBlue),
+              ),
+              Text(
+                "${DateTime.now().day.toString().padLeft(2, "0")}/${DateTime.now().month.toString().padLeft(2, "0")}/${DateTime.now().year} ${DateTime.now().hour.toString().padLeft(2, "0")}:${DateTime.now().minute.toString().padLeft(2, "0")} WIB",
+                style: const TextStyle(
+                  color: lightBlue,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 20),
+
+          const MyAuction(),
         ],
       ),
     );

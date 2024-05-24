@@ -10,10 +10,10 @@ class RegisterPageController {
       TextEditingController();
 
   static void resetControllers() {
-    emailController = TextEditingController();
-    usernameController = TextEditingController();
-    passwordController = TextEditingController();
-    confirmPasswordController = TextEditingController();
+    emailController.text = "";
+    usernameController.text = "";
+    passwordController.text = "";
+    confirmPasswordController.text = "";
     agreeToTermsAndConditions = false;
   }
 

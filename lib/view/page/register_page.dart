@@ -4,6 +4,7 @@ import 'package:tufind_frontend/controller/register_page_controller.dart';
 import 'package:tufind_frontend/view/ui-components/back_button.dart';
 import 'package:tufind_frontend/view/ui-components/button.dart';
 import 'package:tufind_frontend/view/ui-components/check_box.dart';
+import 'package:tufind_frontend/view/ui-components/password_field.dart';
 import 'package:tufind_frontend/view/ui-components/text_field.dart';
 import 'package:tufind_frontend/view/ui-components/title.dart';
 
@@ -22,6 +23,7 @@ class RegisterPage extends StatelessWidget {
         RegisterPageController.confirmPasswordController;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -48,27 +50,41 @@ class RegisterPage extends StatelessWidget {
                       secondPart: "STER",
                     ),
                     const SizedBox(height: 10),
-                    MyTextField(
-                      hintText: "Username",
-                      icon: Icons.person,
-                      controller: usernameController,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
+                      child: MyTextField(
+                        hintText: "Username",
+                        icon: Icons.person,
+                        controller: usernameController,
+                      ),
                     ),
-                    MyTextField(
-                      hintText: "Email",
-                      icon: Icons.email,
-                      controller: emailController,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
+                      child: MyTextField(
+                        hintText: "Email",
+                        icon: Icons.email,
+                        controller: emailController,
+                      ),
                     ),
-                    MyTextField(
-                      hintText: "Password",
-                      icon: Icons.password,
-                      controller: passwordController,
-                      obscureText: true,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
+                      child: MyPasswordField(
+                        hintText: "Password",
+                        icon: Icons.password,
+                        controller: passwordController,
+                      ),
                     ),
-                    MyTextField(
-                      hintText: "Confirm Password",
-                      icon: Icons.password,
-                      controller: confirmPasswordController,
-                      obscureText: true,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
+                      child: MyPasswordField(
+                        hintText: "Confirm Password",
+                        icon: Icons.password,
+                        controller: confirmPasswordController,
+                      ),
                     ),
                     const MyCheckBox(),
                     const SizedBox(
