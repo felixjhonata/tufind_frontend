@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tufind_frontend/controller/page_router.dart';
 
 class LoginPageController {
   static TextEditingController emailController = TextEditingController();
@@ -10,6 +11,7 @@ class LoginPageController {
   }
 
   static void login(BuildContext context) {
-    print("Email: ${emailController.text}");
+    // TODO: Validate Login
+    PageRouter.toHomePage(context);
   }
 }
