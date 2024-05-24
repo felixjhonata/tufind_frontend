@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tufind_frontend/view/login_page.dart';
 import 'package:tufind_frontend/view/register_page.dart';
 
-class LandingPageController {
+class PageRouter {
   static void toLogin(BuildContext context) {
     Navigator.push(
       context,

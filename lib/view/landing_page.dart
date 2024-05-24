@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tufind_frontend/controller/landing_page_controller.dart';
+import 'package:tufind_frontend/controller/page_router.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/view/ui-components/button.dart';
 import 'package:tufind_frontend/view/ui-components/title.dart';
@@ -50,7 +50,7 @@ class LandingPage extends StatelessWidget {
                 height: 50,
               ),
               MyButton(
-                onPressed: () => LandingPageController.toLogin(context),
+                onPressed: () => PageRouter.toLogin(context),
                 text: "LOGIN",
               ),
               const SizedBox(
@@ -58,7 +58,7 @@ class LandingPage extends StatelessWidget {
               ),
               MyButton(
                 isFill: false,
-                onPressed: () => LandingPageController.toRegister(context),
+                onPressed: () => PageRouter.toRegister(context),
                 text: "REGISTER",
               ),
             ],

@@ -58,5 +58,7 @@ class RegisterPageController {
       );
       return;
     }
+
+    // TODO: Register user
   }
 }
