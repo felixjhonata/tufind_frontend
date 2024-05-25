@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tufind_frontend/controller/login_page_controller.dart';
+import 'package:tufind_frontend/controller/register_page_controller.dart';
 import 'package:tufind_frontend/view/page/home_page.dart';
 import 'package:tufind_frontend/view/page/landing_page.dart';
 import 'package:tufind_frontend/view/page/login_page.dart';
@@ -8,6 +10,7 @@ import 'package:tufind_frontend/view/page/transaction_page.dart';
 
 class PageRouter {
   static void toLogin(BuildContext context) {
+    LoginPageController.resetControllers();
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -17,6 +20,7 @@ class PageRouter {
   }
 
   static void toRegister(BuildContext context) {
+    RegisterPageController.resetControllers();
     Navigator.push(
       context,
       MaterialPageRoute(

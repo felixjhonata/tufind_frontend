@@ -72,7 +72,7 @@ class RegisterPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 10),
                       child: MyPasswordField(
-                        hintText: "Password",
+                        hintText: "Password (must consists of 8-20 characters)",
                         icon: Icons.password,
                         controller: passwordController,
                       ),
@@ -102,9 +102,7 @@ class RegisterPage extends StatelessWidget {
               ],
             ),
           ),
-          const MyBackButton(
-            onPressed: RegisterPageController.resetControllers,
-          ),
+          const MyBackButton(),
         ],
       ),
     );

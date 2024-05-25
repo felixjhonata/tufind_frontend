@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tufind_frontend/controller/login_page_controller.dart';
 import 'package:tufind_frontend/model/color.dart';
@@ -60,7 +59,6 @@ class LoginPage extends StatelessWidget {
                           hintText: "Password",
                           icon: Icons.password,
                           controller: passwordController,
-                          obscureText: true,
                         ),
                       ),
                       Container(
@@ -68,7 +66,7 @@ class LoginPage extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 40),
                         alignment: Alignment.centerRight,
                         child: GestureDetector(
-                          onTap: () => print("user forgot his/her password"),
+                          onTap: null,
                           child: const Text(
                             "Forgot Password?",
                             textAlign: TextAlign.right,
@@ -90,9 +88,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
           ),
-          const MyBackButton(
-            onPressed: LoginPageController.resetControllers,
-          ),
+          const MyBackButton(),
         ],
       ),
     );
