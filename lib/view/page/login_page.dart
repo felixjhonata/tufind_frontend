@@ -48,8 +48,8 @@ class LoginPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 30, vertical: 10),
                         child: MyTextField(
-                          hintText: "Username / Email",
-                          icon: Icons.person,
+                          hintText: "Email",
+                          icon: Icons.email,
                           controller: emailController,
                         ),
                       ),

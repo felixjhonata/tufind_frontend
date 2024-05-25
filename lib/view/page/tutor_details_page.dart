@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tufind_frontend/controller/page_router.dart';
 import 'package:tufind_frontend/controller/tutor_details_page_controller.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/model/price.dart';
 import 'package:tufind_frontend/view/ui-components/back_button.dart';
+import 'package:tufind_frontend/view/ui-components/button.dart';
 import 'package:tufind_frontend/view/ui-components/number_field.dart';
 
 class TutorDetailsPage extends StatefulWidget {
@@ -18,7 +20,15 @@ class TutorDetailsPage extends StatefulWidget {
 }
 
 class _TutorDetailsPageState extends State<TutorDetailsPage> {
-  Price price = Price(20, 35);
+  int minSession = 2;
+  int minPrice = 35;
+  late Price price;
+
+  @override
+  void initState() {
+    super.initState();
+    price = Price(minSession, minPrice);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +106,7 @@ class _TutorDetailsPageState extends State<TutorDetailsPage> {
                           MyNumberField(
                             setter: price.setSessionAmnt,
                             getter: price.getSessionAmnt,
-                            minValue: 20,
+                            minValue: minSession,
                             parent: this,
                           ),
                         ],
@@ -105,7 +115,7 @@ class _TutorDetailsPageState extends State<TutorDetailsPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            "Price Rate",
+                            "Price Rate (per session)",
                             style: TextStyle(
                               color: darkBlue,
                               fontWeight: FontWeight.w700,
@@ -115,9 +125,10 @@ class _TutorDetailsPageState extends State<TutorDetailsPage> {
                           MyNumberField(
                             setter: price.setPriceRate,
                             getter: price.getPriceRate,
-                            minValue: 35,
+                            minValue: minPrice,
                             increment: 5,
                             parent: this,
+                            isPrice: true,
                           ),
                         ],
                       ),
@@ -127,6 +138,18 @@ class _TutorDetailsPageState extends State<TutorDetailsPage> {
                         style: const TextStyle(
                           color: lightBlue,
                           fontSize: 15,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      SizedBox(
+                        width: 250,
+                        child: MyButton(
+                          onPressed: () => TutorDetailsPageController.bid(
+                            context,
+                            price.getPriceRate(),
+                            price.getSessionAmnt(),
+                          ),
+                          text: "Bid",
                         ),
                       ),
                     ],

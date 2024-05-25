@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tufind_frontend/controller/page_router.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/view/module/auction.dart';
 
@@ -12,8 +13,8 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       bottomNavigationBar: NavigationBar(
         backgroundColor: darkBlue,
-        destinations: const [
-          IconButton(
+        destinations: [
+          const IconButton(
             onPressed: null,
             icon: Icon(
               Icons.home,
@@ -22,8 +23,8 @@ class HomePage extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: null,
-            icon: Icon(
+            onPressed: () => PageRouter.toProfilePage(context),
+            icon: const Icon(
               Icons.person,
               color: Colors.white,
               size: 40,
@@ -48,7 +49,7 @@ class HomePage extends StatelessWidget {
                   width: 80,
                 ),
                 IconButton(
-                  onPressed: () => print("to transaction"),
+                  onPressed: () => PageRouter.toTransactionPage(context),
                   icon: const Icon(
                     Icons.receipt_long,
                     size: 40,
@@ -95,7 +96,7 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           const MyAuction(),
         ],

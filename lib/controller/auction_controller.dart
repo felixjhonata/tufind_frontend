@@ -76,7 +76,7 @@ class AuctionController {
   static List<Widget> getTutors(BuildContext context) {
     List<Widget> tutors = [];
     tutors.add(_generateTutorDetails(
-        context, "John Doe", "Universitas Indonesia", 442.33, 50));
+        context, "John Doe", "Universitas Indonesia", 442.33, 35));
 
     return tutors;
   }

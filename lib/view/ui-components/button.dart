@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:tufind_frontend/model/color.dart';
 
 class MyButton extends StatelessWidget {
-  const MyButton(
-      {super.key,
-      required this.onPressed,
-      required this.text,
-      this.isFill = true});
+  const MyButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    this.isFill = true,
+    this.color = lightBlue,
+  });
   final Function() onPressed;
   final String text;
   final bool isFill;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class MyButton extends StatelessWidget {
       fontColor = Colors.white;
       buttonStyle = ButtonStyle(
         fixedSize: MaterialStateProperty.all(const Size(350, 50)),
-        backgroundColor: MaterialStateProperty.all(lightBlue),
+        backgroundColor: MaterialStateProperty.all(color),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -37,7 +40,7 @@ class MyButton extends StatelessWidget {
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
             side: BorderSide(
-              color: lightBlue,
+              color: color,
             ),
           ),
         ),

@@ -53,4 +53,21 @@ class TutorDetailsPageController {
 
     return scoreDetails;
   }
+
+  static void bid(BuildContext context, int rate, int session) {
+    showDialog(
+      context: context,
+      builder: (context) => const AlertDialog(
+        content: Text(
+          "Check Transaction Page for details",
+        ),
+        title: Text(
+          "Bid Placed",
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
+    ).then((value) => Navigator.pop(context));
+  }
 }

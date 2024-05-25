@@ -12,6 +12,7 @@ class LoginPageController {
 
   static void login(BuildContext context) {
     // TODO: Validate Login
+    Navigator.pop(context);
     PageRouter.toHomePage(context);
   }
 }

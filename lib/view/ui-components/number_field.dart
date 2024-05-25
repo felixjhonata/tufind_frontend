@@ -8,13 +8,15 @@ class MyNumberField extends StatefulWidget {
       this.increment = 1,
       required this.setter,
       required this.getter,
-      required this.parent});
+      required this.parent,
+      this.isPrice = false});
 
   final int minValue;
   final int increment;
   final Function(int) setter;
   final Function() getter;
   final State parent;
+  final bool isPrice;
 
   @override
   State<MyNumberField> createState() => _MyNumberFieldState();
@@ -36,10 +38,15 @@ class _MyNumberFieldState extends State<MyNumberField> {
           color: darkBlue,
           icon: const Icon(Icons.remove),
         ),
-        Text(
-          widget.getter().toString(),
-          style: const TextStyle(
-            color: darkBlue,
+        SizedBox(
+          width: 40,
+          child: Center(
+            child: Text(
+              widget.getter().toString() + (widget.isPrice ? "k" : ""),
+              style: const TextStyle(
+                color: darkBlue,
+              ),
+            ),
           ),
         ),
         IconButton(
