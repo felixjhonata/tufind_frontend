@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tufind_frontend/controller/backend_controller.dart';
 import 'package:tufind_frontend/controller/page_router.dart';
 import 'package:tufind_frontend/model/color.dart';
+import 'package:tufind_frontend/model/user.dart';
 
 class LoginPageController {
   static TextEditingController emailController = TextEditingController();
@@ -71,6 +72,7 @@ class LoginPageController {
       Navigator.pop(context);
 
       if (response.statusCode == 200) {
+        User.authToken = jsonDecode(response.body)["token"];
         Navigator.pop(context);
         PageRouter.toHomePage(context);
       } else {

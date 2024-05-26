@@ -3,16 +3,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tufind_frontend/controller/tutor_details_page_controller.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/model/price.dart';
+import 'package:tufind_frontend/model/tutor.dart';
 import 'package:tufind_frontend/view/ui-components/back_button.dart';
 import 'package:tufind_frontend/view/ui-components/button.dart';
 import 'package:tufind_frontend/view/ui-components/number_field.dart';
 
 class TutorDetailsPage extends StatefulWidget {
-  const TutorDetailsPage(
-      {super.key, required this.tutorName, required this.tutorUniversity});
+  const TutorDetailsPage({super.key, required this.tutor});
 
-  final String tutorName;
-  final String tutorUniversity;
+  final Tutor tutor;
 
   @override
   State<TutorDetailsPage> createState() => _TutorDetailsPageState();
@@ -20,12 +19,15 @@ class TutorDetailsPage extends StatefulWidget {
 
 class _TutorDetailsPageState extends State<TutorDetailsPage> {
   int minSession = 2;
-  int minPrice = 35;
+  late int minPrice;
   late Price price;
 
   @override
   void initState() {
     super.initState();
+    minPrice = widget.tutor.price;
+    TutorDetailsPageController.tutor = widget.tutor;
+    
     price = Price(minSession, minPrice);
   }
 
@@ -48,7 +50,7 @@ class _TutorDetailsPageState extends State<TutorDetailsPage> {
                   height: 120,
                 ),
                 Text(
-                  widget.tutorName,
+                  widget.tutor.name,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 35,
@@ -57,7 +59,7 @@ class _TutorDetailsPageState extends State<TutorDetailsPage> {
                   ),
                 ),
                 Text(
-                  widget.tutorUniversity,
+                  widget.tutor.university,
                   style: const TextStyle(
                     color: lightBlue,
                     fontSize: 20,

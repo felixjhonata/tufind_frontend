@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:tufind_frontend/controller/backend_controller.dart';
+import 'package:tufind_frontend/controller/login_page_controller.dart';
 import 'package:tufind_frontend/controller/page_router.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/model/user.dart';
@@ -99,8 +100,9 @@ class RegisterPageController {
         .then((response) {
       Navigator.pop(context);
       if (response.statusCode == 200) {
-        Navigator.pop(context);
-        PageRouter.toHomePage(context);
+        LoginPageController.emailController.text = email;
+        LoginPageController.passwordController.text = password;
+        LoginPageController.login(context);
       } else {
         _makeDialog(context, jsonDecode(response.body)["Error"]);
       }

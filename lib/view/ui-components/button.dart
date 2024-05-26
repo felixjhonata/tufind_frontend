@@ -9,7 +9,7 @@ class MyButton extends StatelessWidget {
     this.isFill = true,
     this.color = lightBlue,
   });
-  final Function() onPressed;
+  final Function()? onPressed;
   final String text;
   final bool isFill;
   final Color color;

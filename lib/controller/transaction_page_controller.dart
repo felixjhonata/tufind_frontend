@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/view/ui-components/button.dart';
 
 class TransactionPageController {
-  static Column _generateColumn(String tutorName, int rate, int session) {
+  static Column _generateColumn(String tutorName, int rate, int session,
+      String buttonText, Function()? buttonFunc, Color buttonColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -26,8 +28,9 @@ class TransactionPageController {
           width: 100,
           height: 40,
           child: MyButton(
-            onPressed: () {},
-            text: "Rebid",
+            onPressed: buttonFunc,
+            text: buttonText,
+            color: buttonColor,
           ),
         ),
       ],
@@ -40,6 +43,9 @@ class TransactionPageController {
       "John Doe",
       35,
       22,
+      "Rebid",
+      null,
+      lightBlue,
     ));
     return onGoingBids;
   }
@@ -50,7 +56,23 @@ class TransactionPageController {
       "John Doe",
       35,
       22,
+      "Rebid",
+      null,
+      lightBlue,
     ));
     return outbiddedBid;
+  }
+
+  static List<Column> getAcceptedBid() {
+    List<Column> acceptedBid = [];
+    acceptedBid.add(_generateColumn(
+      "John Doe",
+      35,
+      22,
+      "Rebid",
+      null,
+      lightBlue,
+    ));
+    return acceptedBid;
   }
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tufind_frontend/model/color.dart';
+import 'package:tufind_frontend/model/tutor.dart';
 
 class TutorDetailsPageController {
   static int? sessionAmnt;
   static int? priceRate;
+  static Tutor? tutor;
 
-  static Widget _generateScoreDetail(String subject, double score) {
+  static Widget _generateScoreDetail(String subject, int score) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -34,17 +36,7 @@ class TutorDetailsPageController {
   static List<Widget> getScores() {
     List<Widget> scoreDetails = [];
 
-    Map<String, double> scores = {
-      "Kemampuan Penalaran Umum": 381.67,
-      "Kemampuan Memahami Bacaan dan Menulis": 528.32,
-      "Pengetahuan dan Pemahaman Umum": 571.08,
-      "Pengetahuan Kuantitatif": 368.19,
-      "Matematika": 457.84,
-      "Fisika": 418.64,
-      "Kimia": 415.38,
-      "Biologi": 397.50,
-      "Average": 442.3275,
-    };
+    Map<String, int> scores = tutor!.score;
 
     scores.forEach((key, value) {
       scoreDetails.add(_generateScoreDetail(key, value));
