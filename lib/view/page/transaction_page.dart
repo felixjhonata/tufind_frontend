@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tufind_frontend/controller/transaction_page_controller.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/view/ui-components/back_button.dart';
-import 'package:tufind_frontend/view/ui-components/button.dart';
 
 class TransactionPage extends StatelessWidget {
   const TransactionPage({super.key});

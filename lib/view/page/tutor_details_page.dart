@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tufind_frontend/controller/page_router.dart';
 import 'package:tufind_frontend/controller/tutor_details_page_controller.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/model/price.dart';
