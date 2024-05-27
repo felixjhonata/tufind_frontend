@@ -9,7 +9,7 @@ import 'package:tufind_frontend/model/user.dart';
 class TutorDetailsPageController {
   static Tutor? tutor;
 
-  static Widget _generateScoreDetail(String subject, int score) {
+  static Widget _generateScoreDetail(String subject, double score) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -26,7 +26,7 @@ class TutorDetailsPageController {
           ),
         ),
         Text(
-          "$score",
+          "${score.toStringAsFixed(2)}",
           style: const TextStyle(
             color: lightBlue,
           ),
@@ -38,7 +38,7 @@ class TutorDetailsPageController {
   static List<Widget> getScores() {
     List<Widget> scoreDetails = [];
 
-    Map<String, int> scores = tutor!.score;
+    Map<String, double> scores = tutor!.score;
 
     scores.forEach((key, value) {
       scoreDetails.add(_generateScoreDetail(key, value));

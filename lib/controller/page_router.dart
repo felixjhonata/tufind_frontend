@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tufind_frontend/controller/home_page_controller.dart';
 import 'package:tufind_frontend/controller/login_page_controller.dart';
 import 'package:tufind_frontend/controller/register_page_controller.dart';
+import 'package:tufind_frontend/controller/transaction_page_controller.dart';
 import 'package:tufind_frontend/model/tutor.dart';
 import 'package:tufind_frontend/model/user.dart';
 import 'package:tufind_frontend/view/page/home_page.dart';
@@ -43,11 +44,11 @@ class PageRouter {
   }
 
   static void toTransactionPage(BuildContext context) {
-    Navigator.push(
+    TransactionPageController.getBids().then((value) => Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => const TransactionPage(),
-        ));
+        )));
   }
 
   static void toProfilePage(BuildContext context) {
@@ -67,7 +68,19 @@ class PageRouter {
         ));
   }
 
-  static void toTutorDetails(BuildContext context, Tutor tutor) {
+  static void toTutorDetails(BuildContext context, Tutor tutor,
+      {bool replace = false}) {
+    if (replace) {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TutorDetailsPage(
+              tutor: tutor,
+            ),
+          ));
+      return;
+    }
+
     Navigator.push(
         context,
         MaterialPageRoute(

@@ -3,7 +3,7 @@ class Tutor {
   String name;
   String university;
   int price;
-  Map<String, int> score;
+  Map<String, double> score;
 
   Tutor(
       this.auctionTutorID, this.name, this.university, this.price, this.score);

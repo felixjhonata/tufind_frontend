@@ -63,71 +63,77 @@ class HomePageController {
       var body = jsonDecode(value.body);
       tutors.clear();
       for (var x in body) {
-        Map<String, int> score = {};
+        Map<String, double> score = {};
 
         var tutor = x["tutor"];
 
         double totalScore = 0;
         double totalAmnt = 0;
         if (tutor["kemampuan_penalaran_umum"] != null) {
-          score.addAll(
-              {"Kemampuan Penalaran Umum": tutor["kemampuan_penalaran_umum"]});
+          score.addAll({
+            "Kemampuan Penalaran Umum":
+                tutor["kemampuan_penalaran_umum"].toDouble()
+          });
           totalAmnt++;
           totalScore = tutor["kemampuan_penalaran_umum"] + totalScore;
         }
         if (tutor["pengetahuan_dan_pemahaman_umum"] != null) {
-          score.addAll(
-              {"Pengetahuan Umum": tutor["pengetahuan_dan_pemahaman_umum"]});
+          score.addAll({
+            "Pengetahuan Umum":
+                tutor["pengetahuan_dan_pemahaman_umum"].toDouble()
+          });
           totalAmnt++;
           totalScore = tutor["pengetahuan_dan_pemahaman_umum"] + totalScore;
         }
         if (tutor["pengetahuan_kuantitatif"] != null) {
-          score.addAll(
-              {"Pengetahuan Kuantitatif": tutor["pengetahuan_kuantitatif"]});
+          score.addAll({
+            "Pengetahuan Kuantitatif":
+                tutor["pengetahuan_kuantitatif"].toDouble()
+          });
           totalAmnt++;
           totalScore = tutor["pengetahuan_kuantitatif"] + totalScore;
         }
         if (tutor["math"] != null) {
-          score.addAll({"Matematika": tutor["math"]});
+          score.addAll({"Matematika": tutor["math"].toDouble()});
           totalAmnt++;
           totalScore = tutor["math"] + totalScore;
         }
         if (tutor["physics"] != null) {
-          score.addAll({"Fisika": tutor["physics"]});
+          score.addAll({"Fisika": tutor["physics"].toDouble()});
           totalAmnt++;
           totalScore = tutor["physics"] + totalScore;
         }
         if (tutor["biology"] != null) {
-          score.addAll({"Biologi": tutor["biology"]});
+          score.addAll({"Biologi": tutor["biology"].toDouble()});
           totalAmnt++;
           totalScore = tutor["biology"] + totalScore;
         }
         if (tutor["chemistry"] != null) {
-          score.addAll({"Kimia": tutor["chemistry"]});
+          score.addAll({"Kimia": tutor["chemistry"].toDouble()});
           totalAmnt++;
           totalScore = tutor["chemistry"] + totalScore;
         }
         if (tutor["history"] != null) {
-          score.addAll({"Sejarah": tutor["history"]});
+          score.addAll({"Sejarah": tutor["history"].toDouble()});
           totalAmnt++;
           totalScore = tutor["history"] + totalScore;
         }
         if (tutor["geography"] != null) {
-          score.addAll({"Geografi": tutor["geography"]});
+          score.addAll({"Geografi": tutor["geography"].toDouble()});
           totalAmnt++;
           totalScore = tutor["geography"] + totalScore;
         }
         if (tutor["sosiology"] != null) {
-          score.addAll({"Sosiologi": tutor["sosiology"]});
+          score.addAll({"Sosiologi": tutor["sosiology"].toDouble()});
           totalAmnt++;
           totalScore = tutor["sosiology"] + totalScore;
         }
         if (tutor["economy"] != null) {
-          score.addAll({"Ekonomi": tutor["economy"]});
+          score.addAll({"Ekonomi": tutor["economy"].toDouble()});
           totalAmnt++;
           totalScore = tutor["economy"] + totalScore;
         }
-        score.addAll({"Average": (totalScore / totalAmnt).round()});
+        score.addAll({"Average": (totalScore / totalAmnt)});
         tutors.add(Tutor(
             x["ID"],
             "${tutor["first_name"]} ${tutor["last_name"]}",
@@ -166,7 +172,7 @@ class HomePageController {
                   ),
                 ),
                 Text(
-                  "UTBK Score: ${tutor.score["Average"]}",
+                  "UTBK Score: ${tutor.score["Average"]!.toStringAsFixed(1)}",
                   style: const TextStyle(
                     fontSize: 11,
                     color: lightBlue,
