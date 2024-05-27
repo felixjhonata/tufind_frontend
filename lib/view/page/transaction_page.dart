@@ -75,7 +75,7 @@ class TransactionPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                       ] +
                       TransactionPageController.getOnGoingBid(),
                 ),
@@ -114,9 +114,9 @@ class TransactionPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                       ] +
-                      TransactionPageController.getOnGoingBid(),
+                      TransactionPageController.getOutbiddedBid(),
                 ),
 
                 // Accepted Bid
@@ -153,9 +153,9 @@ class TransactionPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                       ] +
-                      TransactionPageController.getOnGoingBid(),
+                      TransactionPageController.getAcceptedBid(),
                 ),
               ],
             ),

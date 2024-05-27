@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:tufind_frontend/controller/backend_controller.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/view/ui-components/button.dart';
 
 class TransactionPageController {
+  static void getBids() {
+    BackendController.get("api/protected/bid/:auction_id");
+  }
+
   static Column _generateColumn(String tutorName, int rate, int session,
-      String buttonText, Function()? buttonFunc, Color buttonColor) {
+      {String? buttonText,
+      Function()? buttonFunc,
+      Color? buttonColor,
+      bool isFill = true}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -29,10 +37,12 @@ class TransactionPageController {
           height: 40,
           child: MyButton(
             onPressed: buttonFunc,
-            text: buttonText,
-            color: buttonColor,
+            text: buttonText!,
+            color: buttonColor ??= Colors.transparent,
+            isFill: isFill,
           ),
         ),
+        const SizedBox(height: 20),
       ],
     );
   }
@@ -43,9 +53,9 @@ class TransactionPageController {
       "John Doe",
       35,
       22,
-      "Rebid",
-      null,
-      lightBlue,
+      buttonText: "Rebid",
+      buttonFunc: null,
+      buttonColor: lightBlue,
     ));
     return onGoingBids;
   }
@@ -56,9 +66,9 @@ class TransactionPageController {
       "John Doe",
       35,
       22,
-      "Rebid",
-      null,
-      lightBlue,
+      buttonText: "Rebid",
+      buttonFunc: null,
+      buttonColor: lightBlue,
     ));
     return outbiddedBid;
   }
@@ -69,9 +79,18 @@ class TransactionPageController {
       "John Doe",
       35,
       22,
-      "Rebid",
-      null,
-      lightBlue,
+      buttonText: "Rebid",
+      buttonFunc: null,
+      buttonColor: lightBlue,
+    ));
+
+    acceptedBid.add(_generateColumn(
+      "John Doe",
+      40,
+      30,
+      buttonText: "Paid",
+      buttonFunc: null,
+      isFill: false,
     ));
     return acceptedBid;
   }

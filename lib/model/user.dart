@@ -1,4 +1,5 @@
 class User {
+  static int? id;
   static String? authToken;
   String username;
   String email;

@@ -3,6 +3,7 @@ import 'package:tufind_frontend/controller/home_page_controller.dart';
 import 'package:tufind_frontend/controller/login_page_controller.dart';
 import 'package:tufind_frontend/controller/register_page_controller.dart';
 import 'package:tufind_frontend/model/tutor.dart';
+import 'package:tufind_frontend/model/user.dart';
 import 'package:tufind_frontend/view/page/home_page.dart';
 import 'package:tufind_frontend/view/page/landing_page.dart';
 import 'package:tufind_frontend/view/page/login_page.dart';
@@ -58,6 +59,7 @@ class PageRouter {
   }
 
   static void toLandingPage(BuildContext context) {
+    User.id = null;
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(

@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:tufind_frontend/controller/backend_controller.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/model/tutor.dart';
+import 'package:tufind_frontend/model/user.dart';
 
 class TutorDetailsPageController {
-  static int? sessionAmnt;
-  static int? priceRate;
   static Tutor? tutor;
 
   static Widget _generateScoreDetail(String subject, int score) {
@@ -46,20 +48,74 @@ class TutorDetailsPageController {
     return scoreDetails;
   }
 
-  static void bid(BuildContext context, int rate, int session) {
+  static void _makeDialog(BuildContext context, String errorText) {
     showDialog(
       context: context,
-      builder: (context) => const AlertDialog(
-        content: Text(
-          "Check Transaction Page for details",
+      builder: (context) => AlertDialog(
+        backgroundColor: darkBlue,
+        title: const Icon(
+          Icons.warning,
+          size: 100,
+          color: Colors.white,
         ),
-        title: Text(
-          "Bid Placed",
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
+        content: Text(
+          errorText,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.white,
           ),
         ),
       ),
-    ).then((value) => Navigator.pop(context));
+    );
+  }
+
+  static void bid(BuildContext context, int price, int session) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const Dialog(
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        insetPadding: EdgeInsets.symmetric(horizontal: 180),
+        child: SizedBox(
+          height: 50,
+          child: CircularProgressIndicator(
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+
+    BackendController.post(
+      "api/protected/bid",
+      body: {
+        "user_id": User.id,
+        "auctiontutor_id": tutor!.auctionTutorID,
+        "price": price,
+        "session": session,
+      },
+      headers: BackendController.getHeader(),
+    ).then((value) {
+      Navigator.pop(context);
+      if (value.statusCode == 200) {
+        showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+            content: Text(
+              "Check Transaction Page for details",
+            ),
+            title: Text(
+              "Bid Placed",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ).then((value) => Navigator.pop(context));
+      } else {
+        _makeDialog(context, jsonDecode(value.body)["error"]);
+      }
+    });
   }
 }

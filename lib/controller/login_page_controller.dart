@@ -73,6 +73,7 @@ class LoginPageController {
 
       if (response.statusCode == 200) {
         User.authToken = jsonDecode(response.body)["token"];
+        User.id = jsonDecode(response.body)["userid"];
         Navigator.pop(context);
         PageRouter.toHomePage(context);
       } else {
