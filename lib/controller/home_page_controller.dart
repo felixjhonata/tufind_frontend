@@ -55,14 +55,13 @@ class HomePageController {
     auctionEnd = DateTime.parse(body["expected_end_time"]);
     auctionID = body["ID"];
 
-    tutors.clear();
-
     var value = await BackendController.get(
         "api/protected/auctiontutors/$auctionID",
         headers: BackendController.getHeader());
 
     if (value.statusCode == 200) {
       var body = jsonDecode(value.body);
+      tutors.clear();
       for (var x in body) {
         Map<String, int> score = {};
 
