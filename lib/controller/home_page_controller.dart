@@ -6,6 +6,8 @@ import 'package:tufind_frontend/controller/backend_controller.dart';
 import 'package:tufind_frontend/controller/page_router.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/model/tutor.dart';
+import 'package:tufind_frontend/model/user.dart';
+import 'package:tufind_frontend/view/ui-components/button.dart';
 
 class HomePageController {
   static DateTime auctionEnd = DateTime.now();
@@ -144,6 +146,40 @@ class HomePageController {
     }
   }
 
+  static void showProfile(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SizedBox(
+            height: 100,
+            child: Column(
+              children: [
+                Text(
+                  User.email,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(height: 15),
+                MyButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    PageRouter.toLandingPage(context);
+                  },
+                  text: "LOGOUT",
+                  color: Colors.red[900]!,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   static GestureDetector _generateTutorDetails(
       BuildContext context, Tutor tutor) {
     return GestureDetector(
@@ -210,7 +246,7 @@ class HomePageController {
     List<Widget> tutorRow = [];
     tutors.forEach((element) {
       tutorRow.add(_generateTutorDetails(context, element));
-      tutorRow.add(SizedBox(height: 10));
+      tutorRow.add(const SizedBox(height: 10));
     });
 
     return tutorRow;

@@ -30,9 +30,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           IconButton(
-            onPressed: () => PageRouter.toProfilePage(context),
+            onPressed: () => PageRouter.toTransactionPage(context),
             icon: const Icon(
-              Icons.person,
+              Icons.receipt_long,
               color: Colors.white,
               size: 40,
             ),
@@ -56,9 +56,10 @@ class _HomePageState extends State<HomePage> {
                       width: 80,
                     ),
                     IconButton(
-                      onPressed: () => PageRouter.toTransactionPage(context),
+                      onPressed: () =>
+                        HomePageController.showProfile(context),
                       icon: const Icon(
-                        Icons.receipt_long,
+                        Icons.person,
                         size: 40,
                         color: darkBlue,
                       ),

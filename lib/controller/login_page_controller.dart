@@ -41,6 +41,8 @@ class LoginPageController {
     String email = emailController.text;
     String password = passwordController.text;
 
+    User.email = email;
+
     // TODO: Validate Login
     if (email.isEmpty || password.isEmpty) {
       _makeDialog(context, "Please fill all fields");

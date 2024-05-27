@@ -8,7 +8,6 @@ import 'package:tufind_frontend/model/user.dart';
 import 'package:tufind_frontend/view/page/home_page.dart';
 import 'package:tufind_frontend/view/page/landing_page.dart';
 import 'package:tufind_frontend/view/page/login_page.dart';
-import 'package:tufind_frontend/view/page/profile_page.dart';
 import 'package:tufind_frontend/view/page/register_page.dart';
 import 'package:tufind_frontend/view/page/transaction_page.dart';
 import 'package:tufind_frontend/view/page/tutor_details_page.dart';
@@ -44,19 +43,12 @@ class PageRouter {
   }
 
   static void toTransactionPage(BuildContext context) {
-    TransactionPageController.getBids().then((value) => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const TransactionPage(),
-        )));
-  }
-
-  static void toProfilePage(BuildContext context) {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const ProfilePage(),
-        ));
+    TransactionPageController.getBids()
+        .then((value) => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TransactionPage(),
+            )));
   }
 
   static void toLandingPage(BuildContext context) {

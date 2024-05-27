@@ -79,7 +79,8 @@ class RegisterPageController {
     }
 
     // TODO: Register user
-    User user = User(username, email, password);
+    User.email = email;
+    User user = User(username, password);
     showDialog(
       context: context,
       barrierDismissible: false,

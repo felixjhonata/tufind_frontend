@@ -27,20 +27,26 @@ class TransactionPageController {
         double totalScore = 0;
         double totalAmnt = 0;
         if (tutor["kemampuan_penalaran_umum"] != null) {
-          score.addAll(
-              {"Kemampuan Penalaran Umum": tutor["kemampuan_penalaran_umum"].toDouble()});
+          score.addAll({
+            "Kemampuan Penalaran Umum":
+                tutor["kemampuan_penalaran_umum"].toDouble()
+          });
           totalAmnt++;
           totalScore = tutor["kemampuan_penalaran_umum"] + totalScore;
         }
         if (tutor["pengetahuan_dan_pemahaman_umum"] != null) {
-          score.addAll(
-              {"Pengetahuan Umum": tutor["pengetahuan_dan_pemahaman_umum"].toDouble()});
+          score.addAll({
+            "Pengetahuan Umum":
+                tutor["pengetahuan_dan_pemahaman_umum"].toDouble()
+          });
           totalAmnt++;
           totalScore = tutor["pengetahuan_dan_pemahaman_umum"] + totalScore;
         }
         if (tutor["pengetahuan_kuantitatif"] != null) {
-          score.addAll(
-              {"Pengetahuan Kuantitatif": tutor["pengetahuan_kuantitatif"].toDouble()});
+          score.addAll({
+            "Pengetahuan Kuantitatif":
+                tutor["pengetahuan_kuantitatif"].toDouble()
+          });
           totalAmnt++;
           totalScore = tutor["pengetahuan_kuantitatif"] + totalScore;
         }
@@ -242,8 +248,10 @@ class TransactionPageController {
           bid.price,
           bid.session,
           buttonText: "Rebid",
-          buttonFunc: () =>
-              PageRouter.toTutorDetails(context, bid.tutor, replace: true),
+          buttonFunc: () {
+            PageRouter.toHomePage(context);
+            PageRouter.toTutorDetails(context, bid.tutor);
+          },
           buttonColor: darkBlue,
         ));
       }

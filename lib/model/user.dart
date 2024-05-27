@@ -2,9 +2,9 @@ class User {
   static int? id;
   static String? authToken;
   String username;
-  String email;
+  static String email = "";
   String password;
-  User(this.username, this.email, this.password);
+  User(this.username, this.password);
 
   Map<String, dynamic> toJson() {
     return {
