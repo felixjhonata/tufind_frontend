@@ -50,6 +50,10 @@ class LoginPageController {
     } else if (!emailRegex.hasMatch(email)) {
       _makeDialog(context, "Invalid Email Address");
       return;
+    } else if (password.length < 8) {
+      _makeDialog(context, "Password must be at least 8 characters long.");
+    } else if (password.length > 20) {
+      _makeDialog(context, "Password must be at most 20 characters long.");
     }
 
     User.email = email;
