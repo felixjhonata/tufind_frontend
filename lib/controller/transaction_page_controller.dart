@@ -19,6 +19,7 @@ class TransactionPageController {
         headers: BackendController.getHeader());
     var json = jsonDecode(value.body);
     if (value.statusCode == 200) {
+      if (json == null) return;
       for (var bid in json) {
         var tutor = bid["auctiontutor"]["tutor"];
         String tutorName = "${tutor["first_name"]} ${tutor["last_name"]}";
@@ -236,12 +237,14 @@ class TransactionPageController {
     );
   }
 
-  static List<Column> getOnGoingBid(BuildContext context) {
+  static List<Widget> getOnGoingBid(BuildContext context) {
     List<Column> onGoingBids = [];
+    bool isEmpty = true;
     for (var bid in bids) {
       if (bid.status.compareTo("valid") == 0 &&
           !bid.paid &&
           bid.auctionID == HomePageController.auctionID) {
+        isEmpty = false;
         onGoingBids.add(_generateColumn(
           bid.tutorName,
           bid.price,
@@ -255,15 +258,27 @@ class TransactionPageController {
         ));
       }
     }
+    if (isEmpty) {
+      return [
+        SizedBox(
+            height: 150,
+            child: Center(
+              child: Text("You have no on going bids!",
+                  style: TextStyle(color: Colors.grey[700])),
+            )),
+      ];
+    }
 
     return onGoingBids;
   }
 
-  static List<Column> getOutbiddedBid(BuildContext context) {
+  static List<Widget> getOutbiddedBid(BuildContext context) {
     List<Column> outbiddedBid = [];
+    bool isEmpty = true;
     for (var bid in bids) {
       if (bid.status.compareTo("invalid") == 0 &&
           bid.auctionID == HomePageController.auctionID) {
+        isEmpty = false;
         outbiddedBid.add(_generateColumn(
           bid.tutorName,
           bid.price,
@@ -277,16 +292,28 @@ class TransactionPageController {
         ));
       }
     }
+    if (isEmpty) {
+      return [
+        SizedBox(
+            height: 150,
+            child: Center(
+              child: Text("You have no outbidded bids!",
+                  style: TextStyle(color: Colors.grey[700])),
+            )),
+      ];
+    }
     return outbiddedBid;
   }
 
-  static List<Column> getAcceptedBid(BuildContext context) {
+  static List<Widget> getAcceptedBid(BuildContext context) {
     List<Column> acceptedBid = [];
-
+    bool isEmpty = true;
     for (var bid in bids) {
-      if (bid.status.compareTo("valid") == 0 &&
+      if ((bid.status.compareTo("valid") == 0 ||
+              bid.status.compareTo("not_paid") == 0) &&
           !bid.paid &&
           bid.auctionID != HomePageController.auctionID) {
+        isEmpty = false;
         acceptedBid.add(_generateColumn(
           bid.tutorName,
           bid.price,
@@ -299,13 +326,27 @@ class TransactionPageController {
     }
 
     for (var bid in bids) {
-      if (bid.status.compareTo("valid") == 0 && bid.paid) {
+      if ((bid.status.compareTo("valid") == 0 ||
+              bid.status.compareTo("done") == 0) &&
+          bid.paid) {
+        isEmpty = false;
         acceptedBid.add(_generateColumn(bid.tutorName, bid.price, bid.session,
             buttonText: "Paid",
             buttonFunc: null,
             buttonColor: lightBlue,
             isFill: false));
       }
+    }
+
+    if (isEmpty) {
+      return [
+        SizedBox(
+            height: 150,
+            child: Center(
+              child: Text("You have no accepted bids!",
+                  style: TextStyle(color: Colors.grey[700])),
+            )),
+      ];
     }
     return acceptedBid;
   }
