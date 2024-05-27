@@ -31,9 +31,9 @@ class _MyCheckBoxState extends State<MyCheckBox> {
           const Text(
             "I agree to the ",
           ),
-          Text(
+          const Text(
             "terms & conditions.",
-            style: TextStyle(
+            style: const TextStyle(
               decoration: TextDecoration.underline,
               color: lightBlue,
               decorationColor: lightBlue,

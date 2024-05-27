@@ -18,13 +18,13 @@ class MyBackButton extends StatelessWidget {
         },
         color: darkBlue,
         style: ButtonStyle(
-          fixedSize: MaterialStateProperty.all(Size(70, 70)),
+          fixedSize: MaterialStateProperty.all(const Size(70, 70)),
           iconSize: MaterialStateProperty.all(30),
           shadowColor: MaterialStateProperty.all(Colors.black),
           elevation: MaterialStateProperty.all(10),
           backgroundColor: MaterialStateProperty.all(Colors.white),
           shape: MaterialStateProperty.all(
-            CircleBorder(),
+            const CircleBorder(),
           ),
         ),
       ),

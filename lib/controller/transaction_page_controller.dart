@@ -103,8 +103,6 @@ class TransactionPageController {
             Tutor(bid["auctiontutor_id"], tutorName, tutor["university"],
                 tutor["price"], score)));
       }
-    } else {
-      print("error: ${value.statusCode}");
     }
   }
 
@@ -162,8 +160,6 @@ class TransactionPageController {
       Navigator.pop(context);
       if (value.statusCode == 200) {
         _makeDialog(context, "Pay Successful", icon: Icons.thumb_up);
-      } else {
-        print("error: ${value.statusCode}");
       }
     });
   }

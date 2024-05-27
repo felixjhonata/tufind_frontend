@@ -34,7 +34,7 @@ class LandingPage extends StatelessWidget {
                 firstPart: "TU",
                 secondPart: "FIND",
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(

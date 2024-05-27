@@ -41,13 +41,18 @@ class LoginPageController {
     String email = emailController.text;
     String password = passwordController.text;
 
-    User.email = email;
+    RegExp emailRegex =
+        RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
 
-    // TODO: Validate Login
     if (email.isEmpty || password.isEmpty) {
       _makeDialog(context, "Please fill all fields");
       return;
+    } else if (!emailRegex.hasMatch(email)) {
+      _makeDialog(context, "Invalid Email Address");
+      return;
     }
+
+    User.email = email;
 
     Map<String, String> body = {
       "email": email,

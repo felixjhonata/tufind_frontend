@@ -163,7 +163,7 @@ class HomePageController {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 MyButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -244,10 +244,10 @@ class HomePageController {
 
   static List<Widget> getTutors(BuildContext context) {
     List<Widget> tutorRow = [];
-    tutors.forEach((element) {
+    for (var element in tutors) {
       tutorRow.add(_generateTutorDetails(context, element));
       tutorRow.add(const SizedBox(height: 10));
-    });
+    }
 
     return tutorRow;
   }

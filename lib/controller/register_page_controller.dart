@@ -78,7 +78,6 @@ class RegisterPageController {
       return;
     }
 
-    // TODO: Register user
     User.email = email;
     User user = User(username, password);
     showDialog(

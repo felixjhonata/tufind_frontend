@@ -26,7 +26,7 @@ class TutorDetailsPageController {
           ),
         ),
         Text(
-          "${score.toStringAsFixed(2)}",
+          score.toStringAsFixed(2),
           style: const TextStyle(
             color: lightBlue,
           ),
