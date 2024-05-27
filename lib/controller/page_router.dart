@@ -33,7 +33,15 @@ class PageRouter {
     );
   }
 
-  static void toHomePage(BuildContext context) {
+  static void toHomePage(BuildContext context, {bool justPush = false}) {
+    if (justPush) {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ));
+      return;
+    }
     HomePageController.getAuctionEnd()
         .then((value) => Navigator.pushReplacement(
             context,
@@ -60,19 +68,7 @@ class PageRouter {
         ));
   }
 
-  static void toTutorDetails(BuildContext context, Tutor tutor,
-      {bool replace = false}) {
-    if (replace) {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => TutorDetailsPage(
-              tutor: tutor,
-            ),
-          ));
-      return;
-    }
-
+  static void toTutorDetails(BuildContext context, Tutor tutor) {
     Navigator.push(
         context,
         MaterialPageRoute(

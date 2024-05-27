@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:tufind_frontend/controller/backend_controller.dart';
+import 'package:tufind_frontend/controller/page_router.dart';
 import 'package:tufind_frontend/model/color.dart';
 import 'package:tufind_frontend/model/tutor.dart';
 import 'package:tufind_frontend/model/user.dart';
@@ -112,7 +113,10 @@ class TutorDetailsPageController {
               ),
             ),
           ),
-        ).then((value) => Navigator.pop(context));
+        ).then((value) {
+          Navigator.pop(context);
+          PageRouter.toHomePage(context);
+        });
       } else {
         _makeDialog(context, jsonDecode(value.body)["error"]);
       }

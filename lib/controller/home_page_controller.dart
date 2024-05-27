@@ -157,7 +157,7 @@ class HomePageController {
             child: Column(
               children: [
                 Text(
-                  User.email,
+                  User.email.toLowerCase(),
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
@@ -220,7 +220,7 @@ class HomePageController {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  "Rp ${tutor.price}k",
+                  "Rp ${tutor.price + 5}k",
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,

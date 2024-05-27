@@ -25,9 +25,9 @@ class _TutorDetailsPageState extends State<TutorDetailsPage> {
   @override
   void initState() {
     super.initState();
-    minPrice = widget.tutor.price;
+    minPrice = widget.tutor.price + 5;
     TutorDetailsPageController.tutor = widget.tutor;
-    
+
     price = Price(minSession, minPrice);
   }
 

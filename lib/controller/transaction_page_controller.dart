@@ -160,6 +160,9 @@ class TransactionPageController {
       Navigator.pop(context);
       if (value.statusCode == 200) {
         _makeDialog(context, "Pay Successful", icon: Icons.thumb_up);
+        getBids().then(
+          (value) => PageRouter.toTransactionPage(context),
+        );
       }
     });
   }
@@ -245,7 +248,7 @@ class TransactionPageController {
           bid.session,
           buttonText: "Rebid",
           buttonFunc: () {
-            PageRouter.toHomePage(context);
+            PageRouter.toHomePage(context, justPush: true);
             PageRouter.toTutorDetails(context, bid.tutor);
           },
           buttonColor: darkBlue,
@@ -266,8 +269,10 @@ class TransactionPageController {
           bid.price,
           bid.session,
           buttonText: "Rebid",
-          buttonFunc: () =>
-              PageRouter.toTutorDetails(context, bid.tutor, replace: true),
+          buttonFunc: () {
+            PageRouter.toHomePage(context, justPush: true);
+            PageRouter.toTutorDetails(context, bid.tutor);
+          },
           buttonColor: darkBlue,
         ));
       }
