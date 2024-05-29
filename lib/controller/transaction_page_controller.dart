@@ -136,21 +136,21 @@ class TransactionPageController {
       return;
     }
 
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => const Dialog(
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        insetPadding: EdgeInsets.symmetric(horizontal: 180),
-        child: SizedBox(
-          height: 50,
-          child: CircularProgressIndicator(
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
+    // showDialog(
+    //   context: context,
+    //   barrierDismissible: false,
+    //   builder: (context) => const Dialog(
+    //     backgroundColor: Colors.transparent,
+    //     surfaceTintColor: Colors.transparent,
+    //     insetPadding: EdgeInsets.symmetric(horizontal: 180),
+    //     child: SizedBox(
+    //       height: 50,
+    //       child: CircularProgressIndicator(
+    //         color: Colors.white,
+    //       ),
+    //     ),
+    //   ),
+    // );
 
     Map<String, String> body = {
       "proof": proof.toString(),
@@ -158,9 +158,9 @@ class TransactionPageController {
     BackendController.put("api/protected/bid/pay/$id",
             body: body, headers: BackendController.getHeader())
         .then((value) {
-      Navigator.pop(context);
+      // Navigator.pop(context);
       if (value.statusCode == 200) {
-        _makeDialog(context, "Pay Successful", icon: Icons.thumb_up);
+        // _makeDialog(context, "Pay Successful", icon: Icons.thumb_up);
         getBids().then(
           (value) => PageRouter.toTransactionPage(context),
         );
